@@ -2,159 +2,51 @@ const choices = [
     "rock", "paper", "scissors", "snake", "human", "tree", "wolf", "sponge", 
     "fire", "air", "water", "dragon", "devil", "lightning", "gun"
 ];
+
 const playerDisplay = document.getElementById("playerDisplay");
 const computerDisplay = document.getElementById("computerDisplay");
 const resultDisplay = document.getElementById("resultDisplay");
 const playerScoreDisplay = document.getElementById("playerScoreDisplay");
 const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+
 let playerScore = 0;
 let computerScore = 0;
 
+// Rules map where each key has an array of choices it can defeat
+const rules = {
+    rock: ["scissors", "snake", "human", "tree", "wolf", "sponge"],
+    paper: ["air", "water", "dragon", "devil", "lightning", "gun", "rock"],
+    scissors: ["snake", "human", "tree", "wolf", "sponge", "paper", "air"],
+    snake: ["human", "tree", "wolf", "sponge", "paper", "air", "water"],
+    human: ["tree", "wolf", "sponge", "paper", "air", "water", "dragon"],
+    tree: ["wolf", "sponge", "paper", "air", "water", "dragon", "devil"],
+    wolf: ["sponge", "paper", "air", "water", "dragon", "devil", "lightning"],
+    sponge: ["paper", "air", "water", "dragon", "devil", "lightning", "gun"],
+    fire: ["scissors", "snake", "human", "tree", "wolf", "sponge", "paper"],
+    air: ["water", "dragon", "devil", "lightning", "gun", "rock", "fire"],
+    water: ["dragon", "devil", "lightning", "gun", "rock", "fire", "scissors"],
+    dragon: ["devil", "lightning", "gun", "rock", "fire", "scissors", "snake"],
+    devil: ["lightning", "gun", "rock", "fire", "scissors", "snake", "human"],
+    lightning: ["rock", "fire", "scissors", "snake", "human", "tree"],
+    gun: ["fire", "scissors", "snake", "human", "tree", "wolf"]
+};
+
 function playGame(playerChoice) {
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    let result = "";
+    let result;
 
     console.log(`Player Choice: ${playerChoice}`);
     console.log(`Computer Choice: ${computerChoice}`);
 
-    switch (playerChoice) {
-        case "rock":
-            if (["scissors", "snake", "human", "tree", "wolf", "sponge"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "rock") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "paper":
-            if (["air", "water", "dragon", "devil", "lightning", "gun", "rock"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "paper") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "scissors":
-            if (["snake", "human", "tree", "wolf", "sponge", "paper", "air"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "scissors") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "snake":
-            if (["human", "tree", "wolf", "sponge", "paper", "air", "water"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "snake") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "human":
-            if (["tree", "wolf", "sponge", "paper", "air", "water", "dragon"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "human") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "tree":
-            if (["wolf", "sponge", "paper", "air", "water", "dragon", "devil"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "tree") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "wolf":
-            if (["sponge", "paper", "air", "water", "dragon", "devil", "lightning"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "wolf") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "sponge":
-            if (["paper", "air", "water", "dragon", "devil", "lightning", "gun"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "sponge") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "fire":
-            if (["scissors", "snake", "human", "tree", "wolf", "sponge", "paper"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "fire") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "air":
-            if (["water", "dragon", "devil", "lightning", "gun", "rock", "fire"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "air") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "water":
-            if (["dragon", "devil", "lightning", "gun", "rock", "fire", "scissors"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "water") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "dragon":
-            if (["devil", "lightning", "gun", "rock", "fire", "scissors", "snake"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "dragon") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "devil":
-            if (["lightning", "gun", "rock", "fire", "scissors", "snake", "human"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "devil") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "lightning":
-            if (["rock", "fire", "scissors", "snake", "human", "tree"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "lightning") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        case "gun":
-            if (["fire", "scissors", "snake", "human", "tree", "wolf"].includes(computerChoice)) {
-                result = "YOU WIN!";
-            } else if (computerChoice === "gun") {
-                result = "IT'S A TIE!";
-            } else {
-                result = "YOU LOSE!";
-            }
-            break;
-        default:
-            result = "Invalid choice!";
+    // Determine the result
+    if (playerChoice === computerChoice) {
+        result = "IT'S A TIE!";
+    } else if (rules[playerChoice]?.includes(computerChoice)) {
+        result = "YOU WIN!";
+        playerScore++;
+    } else {
+        result = "YOU LOSE!";
+        computerScore++;
     }
 
     playerDisplay.textContent = `PLAYER: ${playerChoice}`;
@@ -162,17 +54,11 @@ function playGame(playerChoice) {
     resultDisplay.textContent = result;
 
     resultDisplay.classList.remove("greenText", "redText");
-
-    switch (result) {
-        case "YOU WIN!":
-            resultDisplay.classList.add("greenText");
-            playerScore++;
-            playerScoreDisplay.textContent = playerScore;
-            break;
-        case "YOU LOSE!":
-            resultDisplay.classList.add("redText");
-            computerScore++;
-            computerScoreDisplay.textContent = computerScore;
-            break;
+    if (result === "YOU WIN!") {
+        resultDisplay.classList.add("greenText");
+        playerScoreDisplay.textContent = playerScore;
+    } else if (result === "YOU LOSE!") {
+        resultDisplay.classList.add("redText");
+        computerScoreDisplay.textContent = computerScore;
     }
 }
