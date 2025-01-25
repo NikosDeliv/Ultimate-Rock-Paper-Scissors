@@ -24,6 +24,44 @@ h1 {
     text-shadow: 1px 1px 3px rgba(116, 185, 255, 0.4); 
 }
 
+/* Style for hidden elements */
+.hidden {
+    display: none;
+}
+
+/* Enraged Greek button styling */
+#EnragedGreek {
+    background: linear-gradient(to right, #0d5eaf, #ffffff, #0d5eaf);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid #0d5eaf;
+    border-radius: 8px;
+    padding: 12px 25px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 20px; /* Ensure space between other buttons */
+}
+
+/* Hover effect for Enraged Greek button */
+#EnragedGreek:hover:not(:disabled) {
+    background: linear-gradient(to right, #ffffff, #0d5eaf, #ffffff);
+    color: #0d5eaf;
+    transform: scale(1.2);
+}
+
+/* When the button is disabled */
+#EnragedGreek:disabled {
+    background: #d3d3d3;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Positioning of the button in the middle */
+#EnragedGreek.unlocked {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
 .choices {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));

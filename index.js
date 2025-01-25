@@ -28,7 +28,8 @@ const rules = {
     dragon: ["devil", "lightning", "gun", "rock", "fire", "scissors", "snake"],
     devil: ["lightning", "gun", "rock", "fire", "scissors", "snake", "human"],
     lightning: ["rock", "fire", "scissors", "snake", "human", "tree"],
-    gun: ["fire", "scissors", "snake", "human", "tree", "wolf"]
+    gun: ["fire", "scissors", "snake", "human", "tree", "wolf"],
+    EnragedGreek: []
 };
 
 function playGame(playerChoice) {
@@ -37,7 +38,13 @@ function playGame(playerChoice) {
 
     console.log(`Player Choice: ${playerChoice}`);
     console.log(`Computer Choice: ${computerChoice}`);
-
+    if (playerChoice === "EnragedGreek") {
+        // Enraged Greek action
+        result = "YOU UNLEASHED THE ENRAGED GREEK!";
+        playerScore += 10;  // Example effect, adds 10 points for Enraged Greek
+        playerScoreDisplay.textContent = playerScore; // Update score display
+    } else
+     {
     // Determine the result
     if (playerChoice === computerChoice) {
         result = "IT'S A TIE!";
@@ -48,6 +55,7 @@ function playGame(playerChoice) {
         result = "YOU LOSE!";
         computerScore++;
     }
+     }
 
     playerDisplay.textContent = `PLAYER: ${playerChoice}`;
     computerDisplay.textContent = `Computer: ${computerChoice}`;
@@ -60,5 +68,18 @@ function playGame(playerChoice) {
     } else if (result === "YOU LOSE!") {
         resultDisplay.classList.add("redText");
         computerScoreDisplay.textContent = computerScore;
+    }
+
+    checkUnlockUltimate(); // Check if Enraged Greek should be unlocked
+}
+
+// Check if the "Enraged Greek" button should be unlocked
+function checkUnlockUltimate() {
+    const EGButton = document.getElementById('EnragedGreek');
+    if (playerScore >= 100) {
+        EGButton.disabled = false;
+        EGButton.innerText = "Enraged Greek (Unlocked)";
+        EGButton.classList.remove('hidden');  // Make it visible
+        EGButton.classList.add('unlocked');   // Center the button
     }
 }
