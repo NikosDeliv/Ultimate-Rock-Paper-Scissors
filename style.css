@@ -1,83 +1,101 @@
-/* Reset some basic styles */
 body, h1, button, div {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
 }
 
-/* Body styling */
 body {
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: #f7f9fc; 
+    color: #2d3436; 
     text-align: center;
     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Title styling */
 h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #e74c3c;
+    font-size: 42px;
+    margin-bottom: 30px;
+    color: #74b9ff;
+    text-shadow: 1px 1px 3px rgba(116, 185, 255, 0.4); 
 }
 
-/* Choices button styling */
 .choices {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
     margin: 20px auto;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 .choices button {
-    background-color: #3498db;
-    color: #ecf0f1;
+    background: linear-gradient(145deg, #a29bfe, #dfe6e9);
+    color: #2d3436;
     border: none;
-    border-radius: 8px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 15px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .choices button:hover {
-    background-color: #2980b9;
-    transform: scale(1.1);
+    background: linear-gradient(145deg, #81ecec, #dfe6e9); 
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .choices button:active {
-    background-color: #1f618d;
-    transform: scale(0.9);
+    background: #ffeaa7; 
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Display styling */
 #playerDisplay, #computerDisplay, #resultDisplay {
     font-size: 24px;
     margin: 20px 0;
+    font-weight: 500;
 }
 
 #resultDisplay {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
-    color: #f39c12;
+    color: #fab1a0; 
+    text-shadow: 1px 1px 3px rgba(250, 177, 160, 0.4);
 }
 
-/* Score display styling */
 .scoreDisplay {
-    font-size: 20px;
-    margin: 10px 0;
+    font-size: 22px;
+    margin: 15px 0;
+    font-weight: 600;
 }
 
 #playerScoreDisplay, #computerScoreDisplay {
     font-weight: bold;
-    font-size: 24px;
-    color: #27ae60;
+    font-size: 28px;
+    color: #55efc4;
 }
 
-/* Image styling */
 img {
     margin-top: 30px;
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+img:hover {
+    transform: scale(1.03); 
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
 }
