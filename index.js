@@ -41,7 +41,7 @@ function playGame(playerChoice) {
     if (playerChoice === "EnragedGreek") {
         // Enraged Greek action
         result = "YOU UNLEASHED THE ENRAGED GREEK!";
-        playerScore += 10;  // Example effect, adds 10 points for Enraged Greek
+        playerScore += 10;  // adds 10 points for Enraged Greek
         playerScoreDisplay.textContent = playerScore; // Update score display
     } else
      {
